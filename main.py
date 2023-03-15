@@ -8,6 +8,7 @@ if __name__ == '__main__':
     nodePattern = r'^([a-zA-Z][a-zA-Z0-9]{0,3}) = (\d+);$'
     #Link: Aaaa - Bbbb = 1010021010;
     linkPattern = r'^([a-zA-Z][a-zA-Z0-9]{0,3}) - ([a-zA-Z][a-zA-Z0-9]{0,3}) : (\d+);$'
+    #first read: all nodes
     with open(settings._SettingsDict['inputFile'], "r") as file:
         for line in file:
             line = line.strip()
@@ -20,11 +21,17 @@ if __name__ == '__main__':
                     #create Node
                     pass
 
-            elif re.match(linkPattern, line):
+    #second read: all links
+    with open(settings._SettingsDict['inputFile'], "r") as file:
+        for line in file:
+            line = line.strip()
+            if line.startswith("//") or line.startswith("#"):
+                continue
+            if re.match(linkPattern, line):
                 linkNode1 = re.match(linkPattern, line).group(1)
                 linkNode2 = re.match(linkPattern, line).group(2)
                 linkWeight = re.match(linkPattern, line).group(3)
                 if validateLinkData(linkNode1, linkNode2, linkWeight):
-                    #create Node
+                    #create Link
                     pass
 
