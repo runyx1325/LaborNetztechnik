@@ -60,4 +60,4 @@ if __name__ == '__main__':
             if node.get_rootWay == 0:
                 print(node.get_name +" -> Root")
             else:
-                print(node.get_name + " -> " + node.get_rootNode.get_name)
+                print(node.get_name + " -> " + node.get_nextNode.get_name)

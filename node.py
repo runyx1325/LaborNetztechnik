@@ -18,6 +18,9 @@ class nodeClass():
     def get_name(self):
         return self.nodeName
     @property
+    def get_nextNode(self):
+        return self.nextNode
+    @property
     def get_rootNode(self):
         return self.rootNode
     @property
@@ -39,14 +42,16 @@ class nodeClass():
     def send(self, nodeDict):
         for link in self.get_linkDict.values():
             #send to all neighbours rootNode, rootWayWeight and node
-            nodeDict.get(link.get_node2).recive(self.get_nextNode, self.get_rootWay, self)
+            #Ich (self) kenne einen Weg zu Root mit der ID (rootNode.get_ID) und den Kosten (self.get_rootWay)
+            nodeDict.get(link.get_node2).recive(self.get_rootNode, self.get_rootWay, self)
 
     def recive(self, rootNode, rootWayWeight, node):
-        if rootNode.get_rootNode.get_ID < self.get_rootNode.get_ID:
+        #Wenn der übergebene Rootknoten eine kleinere ID hat als der bisherige
+        if rootNode.get_ID < self.get_rootNode.get_ID:
                 self.rootNode = rootNode
-                self.wayToRootNode = node
+                self.nextNode = node
                 self.wayToRoot = rootWayWeight + self.get_linkDict.get(node.get_name).get_weight
         elif rootNode.get_ID == self.get_rootNode.get_ID:
             if rootWayWeight + self.get_linkDict.get(node.get_name).get_weight < self.wayToRoot:
-                self.rootNode = node
+                self.nextNode = node
                 self.wayToRoot = rootWayWeight + self.get_linkDict.get(node.get_name).get_weight
