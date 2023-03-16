@@ -1,8 +1,9 @@
 import re
+import random
 from settings import settingsClass
 from helper import *
 from node import nodeClass
-from link import linkClass
+
 
 if __name__ == '__main__':
     settings = settingsClass()
@@ -54,6 +55,12 @@ if __name__ == '__main__':
                 for node in nodeDict.values():
                     #send to all links
                     node.send(nodeDict)
+        else:
+            for i in range(0, settings.countBPDU):
+                randomNode = random.choice(list(nodeDict.values()))
+                if randomNode.get_count < settings.countBPDU:
+                    randomNode.send(nodeDict)
+                    i += 1
 
         #output
         for node in nodeDict.values():

@@ -35,11 +35,11 @@ class nodeClass():
     def link(self, node, weight):
         if node is not self.linkDict:
             self.linkDict[node] = linkClass(self.get_name, node, weight)
-
     def count(self):
         self.count += 1
 
     def send(self, nodeDict):
+        self.count += 1
         for link in self.get_linkDict.values():
             #send to all neighbours rootNode, rootWayWeight and node
             #Ich (self) kenne einen Weg zu Root mit der ID (rootNode.get_ID) und den Kosten (self.get_rootWay)
