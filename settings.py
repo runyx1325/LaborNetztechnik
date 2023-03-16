@@ -1,4 +1,3 @@
-#Hier kommen Konstanten und anderer Hardcode hin
 class settingsClass():
     def __init__(self):
         self.inputFile = "input.txt"
@@ -7,7 +6,7 @@ class settingsClass():
         self.MAX_KOSTEN = 50            #0 - max costs for edge
         self.MAX_NODE_ID = 10000        #1 - max node id
         # Node: Aaaa = 10101001;
-        self.nodePattern = r'^([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT) + r'}) = (\d+);$'
+        self.nodePattern = r'^([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT-1) + r'}) = (\d+);$'
         # Link: Aaaa - Bbbb = 1010021010;
-        self.linkPattern = r'^([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT) + r'}) - ([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT) + r'}) : (\d+);$'
-        self.countBPDU = 0
+        self.linkPattern = r'^([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT-1) + r'}) - ([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT-1) + r'}) : (\d+);$'
+        self.countBPDU = 16
