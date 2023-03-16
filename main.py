@@ -48,12 +48,16 @@ if __name__ == '__main__':
                         node1.link(node2.get_name, linkWeight)
                         node2.link(node1.get_name, linkWeight)
 
-        print("All Nodes:")
-        for x in nodeDict.values():
-            print(x)
+        #logic
+        if settings.countBPDU == 0:
+            for i in range(len(nodeDict)):
+                for node in nodeDict.values():
+                    #send to all links
+                    node.send(nodeDict)
 
-        print("All Links:")
-        for x in nodeDict.values():
-            for y in x.get_linkDict.values():
-                print(y)
-
+        #output
+        for node in nodeDict.values():
+            if node.get_rootWay == 0:
+                print(node.get_name +" -> Root")
+            else:
+                print(node.get_name + " -> " + node.get_rootNode.get_name)
