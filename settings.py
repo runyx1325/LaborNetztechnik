@@ -9,4 +9,4 @@ class settingsClass:
         self.nodePattern = r'^([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT-1) + r'}) = (\d+);$'
         # Link: Aaaa - Bbbb = 1010021010;
         self.linkPattern = r'^([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT-1) + r'}) - ([a-zA-Z][a-zA-Z0-9]{0,' + str(self.MAX_IDENT-1) + r'}) : (\d+);$'
-        self.countBPDU = 16
+        self.countBPDU = 5

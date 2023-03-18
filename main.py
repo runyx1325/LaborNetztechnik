@@ -54,11 +54,13 @@ if __name__ == '__main__':
                     # send to all links
                     node.send(nodeDict)
         else:
-            for i in range(0, settings.countBPDU):
-                randomNode = random.choice(list(nodeDict.values()))
-                if randomNode.get_count < settings.countBPDU:
-                    randomNode.send(nodeDict)
-                    i += 1
+            for i in range(0, settings.countBPDU * settings.countBPDU):
+                x = 0
+                while x == 0:
+                    randomNode = random.choice(list(nodeDict.values()))
+                    if randomNode.get_count < settings.countBPDU:
+                        randomNode.send(nodeDict)
+                        x = 1
 
         # output
         for node in nodeDict.values():
